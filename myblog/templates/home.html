@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+
+{%block contents%}
+<body>
+  <br />
+  {% for myblog in posts %}
+    <div class="card mx-auto col-md-10" >
+      <div class="card-header">
+        제목 : {{myblog.title}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"> 날짜 : {{myblog.pub_date}} </h5>
+        <p class="card-text">본문 미리보기 : {{myblog.summary}}</p>
+        <a href="{%url 'detail' myblog.id%}" class="btn btn-warning">...more</a>
+      </div>
+    </div>
+    <br /><br />
+  {% endfor %}
+
+  <div class = "container">
+    <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {%if posts.has_previous%}
+      <li class="page-item">
+        <a class="page-link" href="?page=1" aria-label="first">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+       <li class="page-item">
+        <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="previous">previous</a>
+      </li>
+      {%endif%}
+      {%if posts.has_next%}
+      <li class="page-item">
+        <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="next">Next</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{posts.paginator.num_pages}}" aria-label="last">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+      {%endif%}
+      </ul>
+    </nav>
+  </div>
+{%endblock%}
+

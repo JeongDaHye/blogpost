@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+
+{%block contents%}
+<body>
+  <div class="card mx-auto col-md-11">
+    <div class="card-body">
+      <h4 class="card-subtitle mb-2 text-muted">제목 : {{myblog.title}}</h4>
+      <p class="card-text">작성 날짜 : {{myblog.pub_date}}</p>
+      <p class="card-text">자세한 본문 : {{myblog.body}}</p>
+      <a href="{%url 'home' %}" class="btn btn-warning">back</a>  
+    </div>
+  </div>
+</body>
+{%endblock%}
